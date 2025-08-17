@@ -40,17 +40,20 @@ Ce projet est un petit système expert écrit en **Prolog** permettant de :
 ?- [enquetePoliciere].
 
 3. **Taper le commande**
-?- main.
+    ```bash
+     main.
 
 4. **Commencer l'enquête**
 Entrez une requête (ex: crime(john, vol)) ou "stop" pour quitter:
-|: crime(john, vol).
+|: 
+    ```bash
+    crime(john,vol).
 john est coupable de vol.
 Niveau de suspicion: 80%.
 
 5. **Consulter l’historique des enquêtes**
-?- show_history.
-
+    ```bash
+    show_history.
 
 ## 📊 Exemple de sortie
 ?- crime(mary, assassinat).
