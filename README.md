@@ -37,7 +37,8 @@ Ce projet est un petit système expert écrit en **Prolog** permettant de :
    swipl
 
 2. **Charger le programme**
-?- [enquetePoliciere].
+    ```bash
+    [enquetePoliciere].
 
 3. **Taper le commande**
     ```bash
@@ -48,8 +49,9 @@ Entrez une requête (ex: crime(john, vol)) ou "stop" pour quitter:
 |: 
     ```bash
     crime(john,vol).
-john est coupable de vol.
-Niveau de suspicion: 80%.
+|: ou pour quitter
+    ```bash
+    stop. 
 
 5. **Consulter l’historique des enquêtes**
     ```bash
