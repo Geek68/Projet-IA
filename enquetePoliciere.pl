@@ -3,7 +3,13 @@ crime_type(vol).
 crime_type(assassinat).
 crime_type(escroquerie).
 
-% Faits (preuves)
+% Directive pour Ã©viter les avertissements (optionnel)
+:- discontiguous has_motive/2.
+:- discontiguous was_near_crime_scene/2.
+:- discontiguous has_fingerprint_on_weapon/2.
+:- discontiguous eyewitness_identification/2.
+
+% Faits
 suspect(john).
 suspect(mary).
 suspect(alice).
@@ -17,14 +23,15 @@ has_fingerprint_on_weapon(john, vol).
 has_motive(mary, assassinat).
 was_near_crime_scene(mary, assassinat).
 has_fingerprint_on_weapon(mary, assassinat).
-eyewitness_identification(mary, assassinat).  % Ajouté pour tester la règle
+eyewitness_identification(mary, assassinat).
 
 has_motive(alice, escroquerie).
 has_bank_transaction(alice, escroquerie).
+
 has_bank_transaction(bruno, escroquerie).
 owns_fake_identity(sophie, escroquerie).
 
-% Règles pour déterminer la culpabilité
+% RÃ¨gles
 is_guilty(Suspect, vol) :-
     has_motive(Suspect, vol),
     was_near_crime_scene(Suspect, vol),
@@ -43,12 +50,17 @@ is_guilty(Suspect, escroquerie) :-
     ; owns_fake_identity(Suspect, escroquerie)
     ).
 
-% Entrée principale (lire un input comme crime(suspect, crime_type) et afficher le résultat)
+% EntrÃ©e principale
 main :-
-    current_input(Input),
-    read(Input, crime(Suspect, CrimeType)),
-    (   is_guilty(Suspect, CrimeType) ->
-        format('~w est coupable de ~w.~n', [Suspect, CrimeType])
-    ;   format('~w n\'est pas coupable de ~w.~n', [Suspect, CrimeType])
-    ),
-    halt.
+    repeat,  % Boucle infinie
+    write('Entrez une requÃªte (ex: crime(john, vol).) ou "stop." pour quitter:'), nl,
+    read(Input),
+    (Input = stop -> true ;  % Condition de sortie
+    (crime(Suspect, CrimeType) = Input ->
+        (is_guilty(Suspect, CrimeType) ->
+            format('~w est coupable de ~w.~n', [Suspect, CrimeType])
+        ;   format('~w n\'est pas coupable de ~w.~n', [Suspect, CrimeType])
+        ),
+        fail  % Force la boucle Ã  continuer
+    ;   write('RequÃªte invalide. Essayez Ã  nouveau.'), nl, fail
+    )).
