@@ -3,6 +3,17 @@ crime_type(vol).
 crime_type(assassinat).
 crime_type(escroquerie).
 
+% Directive pour éviter les avertissements (optionnel) 
+:- discontiguous has_motive/2. 
+:- discontiguous was_near_crime_scene/2. 
+:- discontiguous has_fingerprint_on_weapon/2. 
+:- discontiguous eyewitness_identification/2. 
+:- discontiguous has_dna_evidence/2. 
+:- discontiguous has_camera_footage/2. 
+:- discontiguous has_alibi/2. 
+:- discontiguous has_bank_transaction/2. 
+:- discontiguous owns_fake_identity/2.
+
 
 % Faits
 suspect(john).
@@ -31,6 +42,8 @@ has_camera_footage(bruno, escroquerie). % Nouvelle preuve : Caméra
 
 owns_fake_identity(sophie, escroquerie).
 has_alibi(sophie, escroquerie). % Nouvelle preuve : Alibi
+
+
 
 % Règles
 is_guilty(Suspect, vol) :-
