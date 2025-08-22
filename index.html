@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquête Policière</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+
+    <div class="container mx-auto p-8">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-white">Enquête Policière</h1>
+            <p class="text-gray-400 text-lg mt-2">Utilisez les menus déroulants pour mener votre enquête.</p>
+        </header>
+
+        <main class="grid md:grid-cols-2 gap-8">
+            <!-- Colonne de gauche : Panneau d'investigation -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-6 text-white">Panneau d'investigation</h2>
+                
+                <div class="mb-4">
+                    <label for="crime-type" class="block text-sm font-medium text-gray-300 mb-2">Type de crime</label>
+                    <select id="crime-type" class="w-full bg-gray-700 border border-gray-600 text-white rounded-md p-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="vol">Vol</option>
+                        <option value="assassinat">Assassinat</option>
+                        <option value="escroquerie">Escroquerie</option>
+                    </select>
+                </div>
+
+                <div class="mb-6">
+                    <label for="suspect" class="block text-sm font-medium text-gray-300 mb-2">Suspect</label>
+                    <select id="suspect" class="w-full bg-gray-700 border border-gray-600 text-white rounded-md p-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="john">John</option>
+                        <option value="mary">Mary</option>
+                        <option value="alice">Alice</option>
+                        <option value="bruno">Bruno</option>
+                        <option value="sophie">Sophie</option>
+                    </select>
+                </div>
+
+                <button id="investigate-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition duration-300">
+                    Lancer l'enquête
+                </button>
+            </div>
+
+            <!-- Colonne de droite : Résultats -->
+            <div id="results-container" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-6 text-white">Résultats de l'enquête</h2>
+                <div id="results-content" class="text-center text-gray-400">
+                    <p>Les résultats s'afficheront ici.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Section Historique -->
+        <section id="history-section" class="mt-12">
+            <h2 class="text-3xl font-bold text-white text-center mb-6">Historique des enquêtes</h2>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <table class="w-full text-left text-gray-300">
+                    <thead class="bg-gray-700">
+                        <tr>
+                            <th class="p-3">Suspect</th>
+                            <th class="p-3">Crime</th>
+                            <th class="p-3">Verdict</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <!-- Les lignes de l'historique seront ajoutées ici -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
